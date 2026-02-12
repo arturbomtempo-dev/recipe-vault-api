@@ -1,0 +1,18 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "springframework",
+    "arturbomtempo",
+    "webmvc",
+    "projectlombok",
+    "classpath",
+    "mvnw",
+    "lombok",
+    "datasource",
+    "devtools",
+    "postgresql",
+    "postgres"
+  ],
+  "ignorePaths": ["target/**", ".mvn/**", "**/node_modules/**", "**/.git/**"]
+}

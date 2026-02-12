@@ -43,6 +43,11 @@ application-dev.properties
 application-prod.properties
 application-local.properties
 
+### Environment Variables ###
+.env
+.env.local
+.env.*.local
+
 ### Logs ###
 *.log
 logs/
