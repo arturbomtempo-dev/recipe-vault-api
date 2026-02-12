@@ -9,5 +9,4 @@ public class RecipeVaultApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RecipeVaultApiApplication.class, args);
 	}
-
 }
