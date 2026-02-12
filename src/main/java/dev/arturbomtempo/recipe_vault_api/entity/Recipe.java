@@ -21,14 +21,18 @@ public class Recipe {
     @Column(nullable = false, length = 120)
     private String title;
 
-    @Column(nullable = false, length = 500)
-    private String description;
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String ingredients;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String instructions;
 
     @Column(nullable = false)
-    private Integer prepTimeMinutes;
+    private int prepTimeMinutes;
 
     @Column(nullable = false)
     private int servings;
 
+    @Column(length = 500)
     private String imageUrl;
 }
