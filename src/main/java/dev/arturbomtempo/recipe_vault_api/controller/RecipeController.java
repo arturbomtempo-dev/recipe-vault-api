@@ -23,17 +23,15 @@ public class RecipeController {
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<RecipeResponse> create(
-            @Valid @RequestPart("data") RecipeRequest request,
-            @RequestPart(value = "image", required = false) MultipartFile image
-    ) {
+            @Valid @ModelAttribute RecipeRequest request,
+            @RequestParam(value = "image", required = false) MultipartFile image) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(service.create(request, image));
     }
 
     @GetMapping
     public ResponseEntity<List<RecipeResponse>> findAll(
-            @RequestParam(required = false) String title
-    ) {
+            @RequestParam(required = false) String title) {
         return ResponseEntity.ok(service.findAll(title));
     }
 
@@ -45,8 +43,7 @@ public class RecipeController {
     @PutMapping("/{id}")
     public ResponseEntity<RecipeResponse> update(
             @PathVariable UUID id,
-            @Valid @RequestBody RecipeRequest request
-    ) {
+            @Valid @RequestBody RecipeRequest request) {
         return ResponseEntity.ok(service.update(id, request));
     }
 
