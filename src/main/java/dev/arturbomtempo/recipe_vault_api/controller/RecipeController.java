@@ -40,11 +40,12 @@ public class RecipeController {
         return ResponseEntity.ok(service.findById(id));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<RecipeResponse> update(
             @PathVariable UUID id,
-            @Valid @RequestBody RecipeRequest request) {
-        return ResponseEntity.ok(service.update(id, request));
+            @Valid @ModelAttribute RecipeRequest request,
+            @RequestParam(value = "image", required = false) MultipartFile image) {
+        return ResponseEntity.ok(service.update(id, request, image));
     }
 
     @DeleteMapping("/{id}")

@@ -66,7 +66,7 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public RecipeResponse update(@NonNull UUID id, @NonNull RecipeRequest request) {
+    public RecipeResponse update(@NonNull UUID id, @NonNull RecipeRequest request, MultipartFile image) {
         Recipe recipe = repository.findById(id)
                 .orElseThrow(() -> new RecipeNotFoundException(id));
 
@@ -75,6 +75,11 @@ public class RecipeServiceImpl implements RecipeService {
         recipe.setInstructions(request.instructions());
         recipe.setPrepTimeMinutes(request.prepTimeMinutes());
         recipe.setServings(request.servings());
+
+        if (image != null && !image.isEmpty()) {
+            String imageUrl = storageService.upload(image);
+            recipe.setImageUrl(imageUrl);
+        }
 
         return mapper.toResponse(repository.save(recipe));
     }

@@ -15,7 +15,7 @@ public interface RecipeService {
 
     RecipeResponse findById(UUID id);
 
-    RecipeResponse update(UUID id, RecipeRequest request);
+    RecipeResponse update(UUID id, RecipeRequest request, MultipartFile image);
 
     void delete(UUID id);
 }
